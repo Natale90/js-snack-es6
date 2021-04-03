@@ -93,11 +93,11 @@ function snack2(){
     // punti fatti e falli subiti
     for(let i=0;i<teams.length;i++){
 
-        let rnd = getRandom(1, 100);
-        var oneTeam = teams[i];
-        oneTeam['puntiFatti'] = rnd;
-        rnd = getRandom(1, 100);
-        oneTeam['puntiSubiti'] = rnd;
+      let rnd = getRandom(1, 100);
+      var oneTeam = teams[i];
+      oneTeam['puntiFatti'] = rnd;
+      rnd = getRandom(1, 100);
+      oneTeam['puntiSubiti'] = rnd;
     }
 
     // Usando la destrutturazione creiamo un nuovo array
@@ -106,20 +106,76 @@ function snack2(){
     const newArr = [];
     for(let i=0;i<teams.length;i++){
 
-        const oneTeam = teams[i];
-        let {puntiFatti, puntiSubiti} = oneTeam;
+      const oneTeam = teams[i];
+      let {puntiFatti, puntiSubiti} = oneTeam;
 
-        let resObj = {puntiFatti, puntiSubiti};
-        newArr.push(resObj);
+      let resObj = {puntiFatti, puntiSubiti};
+      newArr.push(resObj);
     }
     console.log(teams, newArr);
 }
 
+// ---------------------------------------SNACK 3---------------------------------
 
+// Scrivi una funzione che fonda due array (aventi lo stesso
+// numero di elementi) prendendo alternativamente gli
+// elementi da uno e dall'altro
+// es. [a,b,c], [1,2,3] → [a,1,b,2,c,3].
+
+function snack3(){
+
+  const ArrStr = ['a','b','c'];
+  const ArrNum=[1,2,3];
+
+  const NewArr =[];
+  for(let i=0;i<ArrStr.length;i++){
+
+      NewArr.push(ArrStr[i], ArrNum[i]);
+  }
+  console.log(NewArr);
+}
+
+
+//---------------------------------SNACK 4-------------------------------------
+
+/*Scrivere una funzione che accetti tre argomenti, un array e
+due numeri (a più piccolo di b).
+La funzione ritornerà un nuovo array con i valori che
+hanno la posizione compresa tra i due numeri.
+Usiamo i nuovi metodi degli array foreach o filter.*/
+
+
+function snack4(arr, min, max){
+  let localMin = min - 1;
+  let localMax = max;
+
+  //con funzione .slice();
+  // let selected = arr.slice(localMin, localMax);
+
+  //con l'uso del ciclo for;
+  // let selected2 = [];
+  // for (let i=0;i<arr.length;i++){
+  //
+  //   if (arr[i] >= localMin && arr[i] <= localMax){
+  //     selected2.push(arr[i]);
+  //   }
+  // }
+
+  //con il ciclo forEach();
+  arr.forEach((item, i) => {
+    if (item >= min && item <= localMax){
+      console.log(i, item);
+    }
+  });
+
+
+}
 function init(){
-    // snack1();
-    snack2();
+  // snack1();
+  // snack2();
+  // snack3();
+  snack4([1,2,3,4,5,6,], 2, 5);
 }
 
 // JQUERY
-$(document).ready(init);
+$(init);
